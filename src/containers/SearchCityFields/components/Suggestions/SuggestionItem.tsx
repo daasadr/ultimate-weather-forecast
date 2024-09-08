@@ -1,9 +1,14 @@
-import React from "react";
+import React from 'react';
 
-const  SuggestionItem: React.FC = () => {
-    return (
-        <>Suggestion item</>
-    );
+interface SuggestionItemProps {
+  city: string;
+}
+
+
+const SuggestionItem: React.FC<SuggestionItemProps> = ({ city }) => {
+  return (
+    <li className="suggestion-item" role="option">{city}</li>
+  );
 };
 
 export default SuggestionItem;
