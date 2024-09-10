@@ -1,50 +1,50 @@
 .search-city-field {
-    flex: 0 0 25%;
-    max-width: 300px;
-    position: relative;
+  flex: 0 0 25%;
+  max-width: 300px;
+  position: relative;
 
-    .search-title {
-        font-size: 1.2em;
-        margin-bottom: 10px;
+  .search-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+
+  .input-wrapper {
+    width: 100%;
+
+    .search-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: border-color 0.3s ease;
+      &:focus {
+        outline: none;
+        border-color: #3498db; // Modrá barva při zaměření
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2); // Jemný modrý stín pro zvýraznění
+      }
+    }
+  }
+
+  .suggestion-container {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+
+    .suggestions-list {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      max-height: 200px;
+      overflow-y: auto;
+      background-color: white;
     }
 
-    .input-wrapper {
-        width: 100%;
+    .suggestion-item {
+      padding: 8px 12px;
+      cursor: pointer;
 
-        .search-input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: border-color 0.3s ease;
-            &:focus {
-                    outline: none;
-                    border-color: #3498db; // Modrá barva při zaměření
-                    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2); // Jemný modrý stín pro zvýraznění
-                }
-        }
+      &:hover {
+        background-color: #f0f0f0;
+      }
     }
-
-    .suggestion-container {
-        position: absolute;
-        width: 100%;
-        z-index: 10;
-
-        .suggestions-list {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            max-height: 200px;
-            overflow-y: auto;
-            background-color: white;
-        }
-
-        .suggestion-item {
-            padding: 8px 12px;
-            cursor: pointer;
-
-            &:hover {
-                background-color: #f0f0f0;
-            }
-        }
-    }
+  }
 }

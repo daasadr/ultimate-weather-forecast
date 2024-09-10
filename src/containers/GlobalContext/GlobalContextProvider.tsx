@@ -6,8 +6,12 @@ interface GlobalContextProviderProps {
   children: React.ReactNode;
 }
 
-export const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({ children }) => {
-  const [selectedCityId, setSelectedCityId] = React.useState<number | null>(null);
+export const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({
+  children,
+}) => {
+  const [selectedCityId, setSelectedCityId] = React.useState<number | null>(
+    null,
+  );
 
   const value: GlobalContextType = {
     selectedCityId,
@@ -15,8 +19,6 @@ export const GlobalContextProvider: React.FC<GlobalContextProviderProps> = ({ ch
   };
 
   return (
-    <GlobalContext.Provider value={value}>
-      {children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
 };

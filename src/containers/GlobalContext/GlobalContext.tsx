@@ -5,17 +5,16 @@ export interface GlobalContextType {
   setSelectedCityId: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const defaultValues: GlobalContextType = {
-  selectedCityId: null,
-  setSelectedCityId: () => {},
-};
 
-export const GlobalContext = React.createContext<GlobalContextType>(defaultValues);
+export const GlobalContext =
+  React.createContext<GlobalContextType | null>(null);
 
 export const useGlobalContext = () => {
   const context = React.useContext(GlobalContext);
-  if (context === undefined) {
-    throw new Error('useGlobalContext must be used within a GlobalContextProvider');
+  if (context === null) {
+    throw new Error(
+      'GlobalContextProvider není dostupný',
+    );
   }
   return context;
 };

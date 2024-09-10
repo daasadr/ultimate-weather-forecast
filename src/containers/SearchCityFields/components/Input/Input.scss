@@ -1,17 +1,17 @@
 .search-input-container {
-    position: relative;
+  position: relative;
 }
 
 .search-input {
-    width: 100%;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 2px solid #ddd;
-    border-radius: 20px;
-    outline: none;
-    transition: border-color 0.3s;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  transition: border-color 0.3s;
 
-    &:focus {
-        border-color: #007bff;
-    }
+  &:focus {
+    border-color: #007bff;
+  }
 }

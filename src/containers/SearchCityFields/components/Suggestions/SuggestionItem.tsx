@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface City {
-    id: number;
-    name: string;
-    country: string;
+  id: number;
+  name: string;
+  country: string;
 }
 
 interface SuggestionItemProps {
@@ -11,11 +11,10 @@ interface SuggestionItemProps {
   onClick: () => void;
 }
 
-
 const SuggestionItem: React.FC<SuggestionItemProps> = ({ city, onClick }) => {
   return (
     <li className="suggestion-item" role="option" onClick={onClick}>
-        {city.name}, {city.country}
+      {city.name}, {city.country}
     </li>
   );
 };

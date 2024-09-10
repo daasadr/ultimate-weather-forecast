@@ -1,14 +1,14 @@
-import React, { useState, useTransition, useEffect, useCallback} from 'react';
+import React, { useState, useTransition, useEffect, useCallback } from 'react';
 import { useGlobalContext } from '../GlobalContext/GlobalContext';
-import InputComponent from './components/Input';
-import Suggestions from './components/Suggestions';
-import { searchCities } from '../../utils/citySearch'
+import InputComponent from './components/Input/InputComponent';
+import Suggestions from './components/Suggestions/Suggestions';
+import { searchCities } from '../../utils/citySearch';
 import './SearchCityField.scss';
 
 interface City {
-    id: number;
-    name: string;
-    country: string;
+  id: number;
+  name: string;
+  country: string;
 }
 
 const SearchCityField: React.FC = () => {
@@ -48,7 +48,6 @@ const SearchCityField: React.FC = () => {
 
   return (
     <section className="search-city-field" aria-label="Search city">
-        
       <InputComponent
         value={searchTerm}
         onChange={handleInputChange}
