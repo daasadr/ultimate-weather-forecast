@@ -1,46 +1,72 @@
-# Getting Started with Create React App
+# Aplikace předpovědi počasí
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tato jednoduchá webová aplikace zobrazuje předpověď počasí na příštích 5 dní pro město vybrané uživatelem. Aplikace využívá OpenWeather API pro získávání dat o počasí.
 
-## Available Scripts
+## Funkce
 
-In the project directory, you can run:
+- Vyhledávání měst s našeptávačem
+- Zobrazení 5denní předpovědi počasí pro vybrané město
+- Responzivní design
 
-### `npm start`
+## Technologie
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React
+- TypeScript
+- SCSS
+- OpenWeather API
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Spuštění aplikace
 
-### `npm test`
+1. Naklonujte repozitář:
+   ```
+   git clone https://github.com/daasadr/ultimate-weather-forecast.git
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Nainstalujte závislosti:
+   ```
+   npm install
+   ```
 
-### `npm run build`
+3. Vytvořte soubor `.env` v kořenovém adresáři projektu a přidejte svůj API klíč pro OpenWeather:
+   ```
+   REACT_APP_OPEN_WEATHER_KEY=váš_api_klíč
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Spusťte aplikaci:
+   ```
+   npm start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. Otevřete `http://localhost:3000` ve vašem prohlížeči.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Podporované prohlížeče
 
-### `npm run eject`
+Aplikace by měla fungovat ve všech moderních prohlížečích, včetně:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Google Chrome (poslední 2 verze)
+- Mozilla Firefox (poslední 2 verze)
+- Microsoft Edge (poslední 2 verze)
+- Safari (poslední 2 verze)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Struktura projektu
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Aplikace je rozdělena do několika klíčových modulů:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `src/containers/`: Obsahuje React komponenty
+  - `ForecastTable.tsx`: Zobrazuje tabulku s 5denní předpovědí
+  - `SearchCityField.tsx`: Implementuje vyhledávací pole s našeptávačem
+  - `InputComponent.tsx`: Komponenta pro vstupní pole
+  - `Suggestions.tsx`: Zobrazuje návrhy měst
+- `services/`:
+  - `weatherService.ts`: Obsahuje funkce pro komunikaci s OpenWeather API
+- `utils/`:
+  - `citySearch.ts`: Implementuje logiku vyhledávání měst
+  - `weatherUtils.ts`: Pomocné funkce pro zpracování dat o počasí
+- `GlobalContext/`: Implementace globálního kontextu pro sdílení stavu aplikace
 
-## Learn More
+## Poznámky k vývoji
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Aplikace používá React Hooks pro správu stavu a side-effectů
+- Pro stylování je použito SCSS
+- Data o městech jsou načítána z lokálního JSON souboru (`city.list.json`)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
