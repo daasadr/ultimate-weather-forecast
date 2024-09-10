@@ -4,6 +4,7 @@ import { getWeatherIcon, ForecastData } from '../../utils/weatherUtils';
 import {
   fetchWeatherForecast,
   WeatherData,
+  fetchCityName,
 } from '../../services/weatherService';
 import { translateWeatherDescription } from '../../utils/weatherTranslation';
 import './ForecastTable.scss';
@@ -13,25 +14,30 @@ const ForecastTable: React.FC = () => {
   const [forecastData, setForecastData] = useState<ForecastData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [cityName, setCityName] = useState<string>('');
 
   useEffect(() => {
     if (selectedCityId) {
       setIsLoading(true);
       setError(null);
-      fetchWeatherForecast(selectedCityId)
-        .then(data => {
-          return processWeatherData(data);
-        })
-        .then(processed => {
+
+      Promise.all([
+        fetchWeatherForecast(selectedCityId),
+        fetchCityName(selectedCityId)
+      ])
+        .then(([weatherData, cityNameData]) => {
+          const processed = processWeatherData(weatherData);
           setForecastData(processed);
+          setCityName(cityNameData);
         })
         .catch(err => {
-          console.error('Error fetching weather:', err);
-          setError('Nepodařilo se načíst předpověď počasí');
+          console.error('Error fetching data:', err);
+          setError('Nepodařilo se načíst data');
         })
         .finally(() => setIsLoading(false));
     }
   }, [selectedCityId]);
+
   const processWeatherData = (data: WeatherData[]): ForecastData[] => {
     const dailyData: ForecastData[] = [];
     for (let i = 0; i < data.length; i += 8) {
@@ -55,7 +61,8 @@ const ForecastTable: React.FC = () => {
 
   return (
     <section className="forecast-table">
-      <h2>5-denní předpověď počasí</h2>
+      {cityName && <h2>Předpověď počasí pro {cityName}</h2>}
+      <h3>5-denní předpověď</h3>
       <table>
         <thead>
           <tr>

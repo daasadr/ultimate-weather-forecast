@@ -1,3 +1,4 @@
+
 declare const process: {
   env: {
     REACT_APP_OPEN_WEATHER_KEY: string
@@ -24,6 +25,11 @@ export interface WeatherData {
   };
 }
 
+export interface CityData {
+  name: string;
+  country: string;
+}
+
 export async function fetchWeatherForecast(cityId: number): Promise<WeatherData[]> {
   const response = await fetch(`${BASE_URL}/forecast?id=${cityId}&appid=${API_KEY}&units=metric&lang=cs`);
   if (!response.ok) {
@@ -31,4 +37,13 @@ export async function fetchWeatherForecast(cityId: number): Promise<WeatherData[
   }
   const data = await response.json();
   return data.list;
+}
+
+export async function fetchCityName(cityId: number): Promise<string> {
+  const response = await fetch(`${BASE_URL}/weather?id=${cityId}&appid=${API_KEY}&lang=cs`);
+  if (!response.ok) {
+    throw new Error('Nepodařilo se načíst informace o městě');
+  }
+  const data = await response.json();
+  return `${data.name}, ${data.sys.country}`;
 }
