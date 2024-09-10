@@ -1,4 +1,10 @@
-const API_KEY = '77c3fe8fa3fea706991be22c67bb8cd5';
+declare const process: {
+  env: {
+    REACT_APP_OPEN_WEATHER_KEY: string
+  }
+}
+
+const API_KEY = process.env.REACT_APP_OPEN_WEATHER_KEY;
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 export interface WeatherData {
