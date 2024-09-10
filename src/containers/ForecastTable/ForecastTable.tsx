@@ -1,9 +1,23 @@
-import React from 'react';
-import { getWeatherIcon, mockForecastData } from '../../utils/weatherUtils';
+import React, { useEffect, useState} from 'react';
+import { useGlobalContext } from '../GlobalContext/GlobalContext';
+import { getWeatherIcon, ForecastData, mockForecastData } from '../../utils/weatherUtils';
 import './ForecastTable.scss';
 
 const ForecastTable: React.FC = () => {
+    const { selectedCityId } = useGlobalContext();
+    const [forecastData, setForecastData] = useState<ForecastData[]>([]);
+
+    useEffect(() => {
+        if (selectedCityId) {
+            // Zde by se normálně volala API pro získání předpovědi
+          // Pro účely tohoto příkladu použiji mockovaná data
+          setForecastData(mockForecastData);
+        }
+    }, [selectedCityId]);
+
+
   return (
+    
     <section className="forecast-table">
       <h2>5-denní předpověď počasí</h2>
       <table>
@@ -17,7 +31,7 @@ const ForecastTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {mockForecastData.map((forecast, index) => (
+          {forecastData.map((forecast, index) => (
             <tr key={index}>
               <td>{new Date(forecast.date).toLocaleDateString()}</td>
               <td>

@@ -1,13 +1,22 @@
 import React from 'react';
 
+interface City {
+    id: number;
+    name: string;
+    country: string;
+}
+
 interface SuggestionItemProps {
-  city: string;
+  city: City;
+  onClick: () => void;
 }
 
 
-const SuggestionItem: React.FC<SuggestionItemProps> = ({ city }) => {
+const SuggestionItem: React.FC<SuggestionItemProps> = ({ city, onClick }) => {
   return (
-    <li className="suggestion-item" role="option">{city}</li>
+    <li className="suggestion-item" role="option" onClick={onClick}>
+        {city.name}, {city.country}
+    </li>
   );
 };
 

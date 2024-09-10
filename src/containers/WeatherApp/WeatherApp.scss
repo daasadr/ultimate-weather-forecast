@@ -1,0 +1,24 @@
+.weather-app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .weather-app-content {
+        display: flex;
+        gap: 20px;
+
+        .search-column {
+            flex: 0 0 25%; // Zabírá přesně čtvrtinu šířky
+            max-width: 300px; // Maximální šířka pro větší obrazovky
+        }
+
+        .forecast-column {
+            flex: 1; // Zabírá zbývající prostor
+        }
+    }
+}

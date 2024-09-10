@@ -1,18 +1,17 @@
 import React from 'react';
 import ForecastTable from './containers/ForecastTable';
+import SearchCityField from './containers/SearchCityFields';
 import './App.scss';
-import InputComponent from './containers/SearchCityFields/components/Input';
-import Suggestions from './containers/SearchCityFields/components/Suggestions';
+
 
 const App: React.FC = () => {
   return (
-    <div className="app">
+    <div className="app-container">
       <header>
-        <h1>Vítejte na stránce pro předpověď počasí</h1>
+        <h1 className='main-tittle'>Vítejte na stránce pro předpověď počasí</h1>
       </header>
-      <main>
-        <InputComponent/>
-        <Suggestions/>
+      <main className='content-wrapper'>
+        <SearchCityField/>
         <ForecastTable />
         
 
