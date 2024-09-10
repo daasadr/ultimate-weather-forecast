@@ -3,6 +3,12 @@
   max-width: 300px;
   position: relative;
 
+  @media (max-width: 768px) {
+      flex: 1;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
   .search-title {
     font-size: 1.2em;
     margin-bottom: 10px;
