@@ -5,6 +5,7 @@ import {
   fetchWeatherForecast,
   WeatherData,
 } from '../../services/weatherService';
+import { translateWeatherDescription } from '../../utils/weatherTranslation';
 import './ForecastTable.scss';
 
 const ForecastTable: React.FC = () => {
@@ -38,7 +39,7 @@ const ForecastTable: React.FC = () => {
       dailyData.push({
         date: new Date(forecast.dt * 1000).toISOString(),
         temperature: Math.round(forecast.main.temp),
-        description: forecast.weather[0].description,
+        description: translateWeatherDescription(forecast.weather[0].description),
         icon: forecast.weather[0].icon,
         windSpeed: Math.round(forecast.wind.speed),
         precipitation: forecast.rain ? Math.round(forecast.rain['3h']) : 0,
