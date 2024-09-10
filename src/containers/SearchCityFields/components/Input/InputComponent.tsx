@@ -30,15 +30,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
         }}
         tabIndex={0}
       />
-      {value && (
-        <button
-          className="clear-button"
-          onClick={onClear}
-          aria-label="Vymazat vyhledávání"
-        >
-          &times;
-        </button>
-      )}
+      
     </div>
   );
 };
