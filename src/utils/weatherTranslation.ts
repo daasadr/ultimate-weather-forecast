@@ -9,7 +9,8 @@ export const weatherTranslations: { [key: string]: string } = {
   "snow": "sněžení",
   "mist": "mlha",
   "light rain": "lehký déšť",
-  "overcast clouds": "oblačno"
+  "overcast clouds": "oblačno",
+  "moderate rain":"mírný déšť"
 };
 
 export function translateWeatherDescription(description: string): string {
